@@ -4,16 +4,16 @@
   "description": "Full-stack e-commerce store built with React.js, Node.js, Express.js, and MongoDB. Features include product management , user authentication with JWT, Stripe payments, Redis integration, and an admin dashboard for order analytics. The project implements token refresh using Axios interceptors, Stripe payments, and coupon handling in React.",
   "main": "backend/server.js",
   "scripts": {
-    "dev":"nodemon backend/server.js",
+    "dev": "nodemon backend/server.js",
     "start": "node backend/server.js"
   },
   "keywords": [],
   "author": "",
-  "type":"module",
+  "type": "module",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
-    "cloudinary": "^2.4.0",
+    "cloudinary": "^2.5.0",
     "cookie-parser": "^1.4.6",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
