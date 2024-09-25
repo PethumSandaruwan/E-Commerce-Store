@@ -16,6 +16,7 @@ function App() {
 
         </div>
       </div>
+      <div className="relative z-50 pt-20">
       <Navbar/>
       <Routes>
         <Route path='/' element={<HomePage/>}/>
@@ -24,6 +25,7 @@ function App() {
 
         
       </Routes>
+      </div>
     </div>
   )
 }
