@@ -4,7 +4,7 @@ import cloudinary from '../lib/cloudinary.js';
 
 export const getAllProducts = async (req,res)=>{
     try {
-        const getAllProducts = await Product.find({});
+        const products = await Product.find({});
         res.json({products})
     } catch (error) {
         console.log("Error in getAllProducts controller",error.message);
