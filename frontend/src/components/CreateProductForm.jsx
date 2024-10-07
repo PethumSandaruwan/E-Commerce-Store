@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { PlusCircle,Upload,Loader } from 'lucide-react';
+import { useProductStore } from '../stores/useProductStore';
 
 const catergories=["jean","t-shirt","shoe","glasses","jacket","suit","bag"];
 
@@ -14,11 +15,17 @@ const CreateProductForm = () => {
     image:"",
   });
 
- const loading=false;
 
-  const handleSubmit=(e)=>{
+ const {createProduct,loading}=useProductStore();
+
+  const handleSubmit= async(e)=>{
     e.preventDefault();
-    console.log(newProduct);
+  try {
+    await createProduct(newProduct);
+    setNewProduct({name:"",description:"",price:"",category:"",image:""});
+  } catch (error) {
+    console.log("error creating a product")
+  }
   }
   const handleImageChange=(e)=>{
     const file=e.target.files[0];
@@ -45,9 +52,9 @@ const CreateProductForm = () => {
     </h2>
     <form  onSubmit={handleSubmit}className='space-y-4'>
         <div>
-            <lable htmlFor='name' className='block text-sm font-medium text-gray-300'>
+            <label htmlFor='name' className='block text-sm font-medium text-gray-300'>
                 Product Name 
-            </lable>
+            </label>
             <input
             type='text'
             id='name'
@@ -60,9 +67,9 @@ const CreateProductForm = () => {
             />
         </div>
         <div>
-            <lable htmlFor='name' className='block text-sm font-medium text-gray-300'>
+            <label htmlFor='name' className='block text-sm font-medium text-gray-300'>
                 Description
-            </lable>
+            </label>
             <input
             type='text'
             id='description'
@@ -75,9 +82,9 @@ const CreateProductForm = () => {
             />
         </div>
         <div>
-            <lable htmlFor='name' className='block text-sm font-medium text-gray-300'>
+            <label htmlFor='name' className='block text-sm font-medium text-gray-300'>
                 Price
-            </lable>
+            </label>
             <input
             type='number'
             id='price'
@@ -91,9 +98,9 @@ const CreateProductForm = () => {
             />
         </div>
         <div>
-            <lable htmlFor='name' className='block text-sm font-medium text-gray-300'>
+            <label htmlFor='name' className='block text-sm font-medium text-gray-300'>
                 Category
-            </lable>
+            </label>
             <select
             id='category'
             name='category'
