@@ -1,6 +1,6 @@
 const catergories=[
   {href:"/jeans",name:"Jeans",imageUrl:"/jeans.jpg"},
-  {href:"/tshirts",name:"T-shirts",imageUrl:"/shirts.jpg"},
+  {href:"/t-shirts",name:"T-shirts",imageUrl:"/shirts.jpg"},
   {href:"/shoes",name:"Shoes",imageUrl:"/shoes.jpg"},
   {href:"/glasses",name:"Glasses",imageUrl:"/glasses.jpg"},
   {href:"/jackets",name:"Jackets",imageUrl:"/jackets.jpg"},
@@ -10,7 +10,7 @@ const catergories=[
 ]
 
 
-import { div } from 'framer-motion/client';
+
 import React from 'react'
 import CategoryItem from '../components/CategoryItem';
 
