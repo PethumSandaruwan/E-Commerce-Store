@@ -44,16 +44,36 @@ export const useCartStore = create((set,get)=>({
         toast.success("Product removed from cart");
         get().calculateTotals();
       },
-    calculateTotals:()=>{
-        const {cart,coupon}=get();
-        const subtotal=cart.reduce((sum,item)=>sum+ item.price*item.quantity,0)
-        let total=subtotal;
 
-        if(coupon){
-            const discount = subtotal*(coupon.discountPercentage/100);
-            total=subtotal-discount;
+      
+    updateQuantity:async(productId,quantity)=>{
+      if(quantity===0){
+        get().removeFromCart(productId)
+        return;
+      }
+      await axios.put(`/cart/${productId}`,{quantity});
+      set((prevState)=>({
+        cart:prevState.cart.map((item)=>item._id===productId?{...item,quantity}:
+          item
+        ),
+      }));
+      get().calculateTotals();
+    },
 
+      calculateTotals: () => {
+        const { cart, coupon } = get();
+        const subTotal = cart.reduce(
+          (sum, item) => sum + item.price * item.quantity,
+          0
+        );
+        let total = subTotal;
+    
+        if (coupon) {
+          const discount = subTotal * (coupon.discountPercentage / 100);
+          total = subTotal - discount;
         }
-        set({subtotal,total});
-    }
+    
+        set({ subTotal, total });
+      },
+
 }))
