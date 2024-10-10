@@ -56,7 +56,7 @@ export const removeAllFromCart = async(req,res)=>{
 export const updateQuantity=async(req,res)=>{
     try {
         const {id:productId}=req.params;
-        const {quantity}=re.body;
+        const {quantity}=req.body;
         const user= req.user;
         const existingItem = user.cartItems.find((item)=>item.id===productId)
         
