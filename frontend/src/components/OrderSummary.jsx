@@ -5,9 +5,9 @@ import {   MoveRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const OrderSummary = () => {
-const {total,subtotal,coupon,isCouponApplied}=useCartStore();
-const savings = subtotal-total;
-const formattedSubtotal=subtotal.toFixed(2);
+const {total,subTotal,coupon,isCouponApplied}=useCartStore();
+const savings = subTotal-total;
+const formattedSubTotal=subTotal.toFixed(2);
 const formattedTotal = total.toFixed(2);
 const formattedSavings=savings.toFixed(2);
 
@@ -29,7 +29,7 @@ const formattedSavings=savings.toFixed(2);
       <div className='space-y-2'>
         <dl className='flex items-center justify-between gap-4'>
           <dt className='text-base font-normal text-gray-300'>Original Price</dt>
-          <dd className='text-base font-medium text-white'>${formattedSubtotal}</dd>
+          <dd className='text-base font-medium text-white'>${formattedSubTotal}</dd>
 
         </dl>
         {savings>0 &&(
