@@ -1,3 +1,5 @@
+import Product from "../models/product.model.js";
+
 export const getCartProducts=async(req,res)=>{
     try {
         const products=await Product.find({_id:{$in:req.user.cartItems}});
